@@ -28,6 +28,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Load the real extension and check field extraction on every demo form
         run: node eval/extract-check.mjs
+      - name: Check the keyboard shortcut, including when another extension already owns it
+        run: node eval/shortcut-check.mjs
       - name: Pack the extension
         run: npm run pack
       - uses: actions/upload-artifact@v7

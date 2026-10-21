@@ -18,8 +18,36 @@ async function load() {
   $('model').dataset.wanted = (settings && settings.model) || '';
   $('memory-count').textContent = `It currently remembers ${Object.keys(memory || {}).length} page(s).`;
   renderFacts();
+  refreshShortcut();
   checkConnection();
 }
+
+// ---------- keyboard shortcut ----------
+let shortcut = '';
+
+async function refreshShortcut() {
+  const s = await chrome.runtime.sendMessage({ cmd: 'shortcut' });
+  if (!s || !s.ok) return;
+  const { ui } = await chrome.storage.local.get('ui');
+  shortcut = T.prettyShortcut(s.shortcut);
+  $('key-banner').hidden = !!s.shortcut || !!(ui && ui.keyBannerDismissed);
+  $('key-suggested').textContent = T.prettyShortcut(s.suggested);
+  $('key-status').innerHTML = s.shortcut
+    ? `Fill the form on any page with <span class="kbd">${esc(shortcut)}</span>.`
+    : 'Not set yet. Until you choose one, use the Ditto toolbar button or right-click &rarr; <i>Fill this form with Ditto</i>.';
+  $('key-change').textContent = s.shortcut ? 'Change shortcut' : 'Choose a shortcut';
+  document.querySelectorAll('.how-to-fill').forEach((n) => {
+    n.innerHTML = s.shortcut ? `press <span class="kbd">${esc(shortcut)}</span>` : 'click the Ditto toolbar button';
+  });
+}
+
+document.querySelectorAll('[data-open-shortcuts]').forEach((b) => b.addEventListener('click', () => chrome.runtime.sendMessage({ cmd: 'open-shortcuts' })));
+$('key-dismiss').addEventListener('click', async () => {
+  const { ui } = await chrome.storage.local.get('ui');
+  await chrome.storage.local.set({ ui: { ...(ui || {}), keyBannerDismissed: true } });
+  $('key-banner').hidden = true;
+});
+window.addEventListener('focus', refreshShortcut);
 
 function scheduleSave() {
   $('save-status').textContent = 'Saving...';
@@ -146,7 +174,7 @@ $('load-demo').addEventListener('click', async () => {
   profile = { version: 1, rev: (profile.rev || 0) + 1, vrev: (profile.vrev || 0) + 1, facts: demo.facts };
   await chrome.storage.local.set({ profile });
   renderFacts();
-  $('save-status').textContent = 'Loaded Meera. Now open a demo form and press Alt+Shift+D.';
+  $('save-status').textContent = `Loaded Meera. Now open a demo form and ${shortcut ? `press ${shortcut}` : 'click the Ditto toolbar button'}.`;
 });
 
 // ---------- settings ----------

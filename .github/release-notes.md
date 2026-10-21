@@ -4,6 +4,6 @@
 2. Download **ditto-extension.zip** below and unzip it.
 3. Open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and choose the unzipped folder.
 4. On the profile page that opens, paste your resume (or load the fictional demo person, Meera).
-5. Open any form and press **Alt+Shift+D**.
+5. Open any form and press **Alt+Shift+.** (or click the Ditto toolbar button). If another extension already uses that combination, Ditto's popup links you to `chrome://extensions/shortcuts` to pick another.
 
 Everything runs on your computer. Ditto only talks to Ollama on `127.0.0.1`, never submits a form, and never ticks consent boxes.

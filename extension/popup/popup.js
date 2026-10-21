@@ -1,8 +1,30 @@
+/* global Ditto */
 const $ = (id) => document.getElementById(id);
+const pretty = (s) => Ditto.text.prettyShortcut(s);
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+}
 
 function setRow(dotId, textId, kind, html) {
   $(dotId).className = `dot ${kind}`;
   $(textId).innerHTML = html;
+}
+
+function renderShortcut(s) {
+  if (s.shortcut) {
+    setRow('key-dot', 'key-text', 'ok', `Press <span class="kbd">${esc(pretty(s.shortcut))}</span> on any form.`);
+    $('key-kbd').textContent = pretty(s.shortcut);
+    $('key-kbd').hidden = false;
+    return;
+  }
+  const why = s.suggested ? ` (another extension probably uses <span class="kbd">${esc(pretty(s.suggested))}</span>)` : '';
+  setRow('key-dot', 'key-text', 'warn', `No keyboard shortcut yet${why}. <a href="#" id="set-key">Choose one</a>`);
+  $('set-key').addEventListener('click', async (e) => {
+    e.preventDefault();
+    await chrome.runtime.sendMessage({ cmd: 'open-shortcuts' });
+    window.close();
+  });
 }
 
 function showError(html) {
@@ -40,6 +62,7 @@ async function init() {
     showError('Ditto could not start. Try reloading the extension.');
     return;
   }
+  renderShortcut(s);
 
   if (!s.ollama) {
     setRow('ollama-dot', 'ollama-text', 'bad', 'Ollama is not running. Open the Ollama app or run <code>ollama serve</code>.');

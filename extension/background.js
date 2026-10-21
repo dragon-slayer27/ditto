@@ -1,6 +1,6 @@
 /*
  * Ditto background service worker.
- * - Injects the content scripts only when you ask (toolbar button, Alt+Shift+D, or right-click menu).
+ * - Injects the content scripts only when you ask (toolbar button, keyboard shortcut, or right-click menu).
  * - Talks to Ollama on this computer. Nothing else on the network is ever contacted.
  */
 /* global importScripts */
@@ -13,6 +13,26 @@ const DEFAULT_SETTINGS = { ollamaUrl: 'http://127.0.0.1:11434', model: '', numCt
 const CONTENT_FILES = ['lib/text.js', 'content/extract.js', 'content/fill.js', 'content/panel.js', 'content/main.js'];
 const KEEP_ALIVE = '30m';
 const ORIGIN_RULE_ID = 1;
+const FILL_COMMAND = 'fill-form';
+
+// ---------- keyboard shortcut ----------
+// Chrome silently skips a suggested shortcut that another extension already uses, so Ditto checks
+// what it actually got and tells you when it has none.
+function suggestedShortcut() {
+  const cmd = (chrome.runtime.getManifest().commands || {})[FILL_COMMAND];
+  return (cmd && cmd.suggested_key && cmd.suggested_key.default) || '';
+}
+
+async function shortcutInfo() {
+  const all = await chrome.commands.getAll();
+  const cmd = all.find((c) => c.name === FILL_COMMAND);
+  return { shortcut: (cmd && cmd.shortcut) || '', suggested: suggestedShortcut() };
+}
+
+async function refreshActionTitle() {
+  const { shortcut } = await shortcutInfo();
+  await chrome.action.setTitle({ title: shortcut ? `Ditto: fill this form (${T.prettyShortcut(shortcut)})` : 'Ditto: fill this form (no keyboard shortcut set yet)' });
+}
 
 // ---------- storage ----------
 async function getSettings() {
@@ -380,6 +400,8 @@ async function status() {
   const settings = await getSettings();
   const profile = await getProfile();
   const out = { facts: profile.facts.length, ollama: false, model: '', modelName: '', loaded: false, models: [], url: settings.ollamaUrl };
+  Object.assign(out, await shortcutInfo());
+  refreshActionTitle();
   try {
     const tags = await ollamaJson(settings, '/api/tags', null, 4000);
     out.ollama = true;
@@ -403,7 +425,7 @@ async function warmup() {
 }
 
 // Hooks for the automated eval (eval/run-eval.mjs drives the real extension through these).
-self.__ditto = { runOnTab, warmup, status };
+self.__ditto = { runOnTab, warmup, status, shortcutInfo };
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   const reply = (p) =>
@@ -425,6 +447,12 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     case 'open-options':
       chrome.runtime.openOptionsPage();
       return false;
+    case 'shortcut':
+      reply(shortcutInfo());
+      return true;
+    case 'open-shortcuts':
+      reply(chrome.tabs.create({ url: 'chrome://extensions/shortcuts' }).then(() => ({})));
+      return true;
     case 'import': {
       const release = keepAwake();
       reply(
@@ -445,7 +473,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 });
 
 chrome.commands.onCommand.addListener((command, tab) => {
-  if (command !== 'fill-form' || !tab) return;
+  if (command !== FILL_COMMAND || !tab) return;
   runOnTab(tab.id, 'fill').catch((e) => flagError(tab.id, e));
 });
 
@@ -454,8 +482,11 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     chrome.contextMenus.create({ id: 'ditto-fill', title: 'Fill this form with Ditto', contexts: ['page', 'editable'] });
     chrome.contextMenus.create({ id: 'ditto-learn', title: 'Ditto: remember what I typed', contexts: ['page', 'editable'] });
   });
+  refreshActionTitle();
   if (details.reason === 'install') chrome.runtime.openOptionsPage();
 });
+
+chrome.runtime.onStartup.addListener(refreshActionTitle);
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (!tab) return;

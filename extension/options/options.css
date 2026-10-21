@@ -6,6 +6,8 @@ h1 { margin: 4px 0 4px; font-size: 24px; }
 .lead { margin: 0; color: #4b5563; max-width: 680px; }
 main { max-width: 860px; margin: 0 auto; padding: 8px 20px 60px; display: grid; gap: 16px; }
 .card { background: #fffdf7; border: 1px solid #e8e0cc; border-radius: 16px; padding: 18px 20px; }
+.card.notice { background: #fffbeb; border-color: #f59e0b; box-shadow: 0 0 0 3px rgba(245, 158, 11, .15); }
+.card.notice p { margin: 0; color: #78350f; }
 h2 { margin: 0 0 6px; font-size: 17px; }
 .muted { color: #6b7280; }
 .small { font-size: 12.5px; }

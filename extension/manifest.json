@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Ditto: local AI form filler",
   "short_name": "Ditto",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Type it once. Ditto fills any form from your private profile using Gemma on your own computer (via Ollama). Nothing leaves your machine.",
   "minimum_chrome_version": "116",
   "icons": {
@@ -12,7 +12,7 @@
     "128": "icons/icon128.png"
   },
   "action": {
-    "default_title": "Ditto: fill this form (Alt+Shift+D)",
+    "default_title": "Ditto: fill this form",
     "default_popup": "popup/popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
@@ -28,7 +28,7 @@
   "commands": {
     "fill-form": {
       "suggested_key": {
-        "default": "Alt+Shift+D"
+        "default": "Alt+Shift+Period"
       },
       "description": "Fill the form on this page"
     }

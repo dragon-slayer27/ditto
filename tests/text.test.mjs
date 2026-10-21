@@ -82,3 +82,10 @@ test('fieldSignature is stable and sensitive to label and options', () => {
   assert.equal(a, b);
   assert.notEqual(a, c);
 });
+
+test('prettyShortcut shows punctuation keys as printed', () => {
+  assert.equal(T.prettyShortcut('Alt+Shift+Period'), 'Alt+Shift+.');
+  assert.equal(T.prettyShortcut('Ctrl+Comma'), 'Ctrl+,');
+  assert.equal(T.prettyShortcut('Alt+Shift+Y'), 'Alt+Shift+Y');
+  assert.equal(T.prettyShortcut(''), '');
+});

@@ -248,6 +248,15 @@
     return '';
   }
 
+  // Chrome reports shortcuts like "Alt+Shift+Period"; show keys the way they're printed on the keyboard.
+  function prettyShortcut(s) {
+    const keys = { Period: '.', Comma: ',' };
+    return String(s || '')
+      .split('+')
+      .map((k) => keys[k] || k)
+      .join('+');
+  }
+
   const api = {
     MONTHS,
     cleanText,
@@ -266,6 +275,7 @@
     fnv1a,
     fieldSignature,
     skipReason,
+    prettyShortcut,
   };
 
   root.Ditto = root.Ditto || {};

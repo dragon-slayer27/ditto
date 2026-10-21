@@ -33,7 +33,7 @@ You *could* paste the form into a cloud chatbot along with your ID numbers, addr
 
 ```mermaid
 flowchart LR
-  A[You press Alt+Shift+D] --> B[Content script reads the form<br/>labels, sections, options, format hints]
+  A[You press Alt+Shift+.] --> B[Content script reads the form<br/>labels, sections, options, format hints]
   B --> C{Page memory<br/>seen this form?}
   C -- yes --> F
   C -- no --> D[Service worker asks Gemma 4 via Ollama<br/>JSON schema: one key per field id]
@@ -92,9 +92,11 @@ The same eval also runs in the cloud: the [Model eval workflow](https://github.c
 2. Get the extension: download `ditto-extension.zip` from the [latest release](https://github.com/dragon-slayer27/ditto/releases/latest) and unzip it, or clone this repo.
 3. Open `chrome://extensions`, switch on **Developer mode**, click **Load unpacked** and choose the `extension` folder.
 4. The profile page opens. Paste your resume (Gemma extracts the facts), add facts by hand, or click **Load Meera** to try the fictional demo person.
-5. Open any form, or the [demo forms](https://dragon-slayer27.github.io/ditto/forms/), and press **Alt+Shift+D** (or click the toolbar icon, or right-click > *Fill this form with Ditto*).
+5. Open any form, or the [demo forms](https://dragon-slayer27.github.io/ditto/forms/), and press **Alt+Shift+.** (Alt, Shift and the full-stop key). The toolbar icon and right-click > *Fill this form with Ditto* work too.
 
 You don't need to change any Ollama settings.
+
+**No shortcut?** Chrome quietly skips an extension's suggested shortcut when another extension already uses it. If that happens, Ditto's popup tells you, and its *Choose one* link opens `chrome://extensions/shortcuts`, where you can pick any combination. The toolbar icon and right-click menu work either way.
 
 ## Privacy and safety
 
@@ -109,6 +111,7 @@ npm install
 npm run setup:browsers         # Playwright's Chromium, stored in .cache/
 npm test                       # unit tests (no model needed)
 node eval/extract-check.mjs    # loads the extension, checks extraction on all demo forms
+node eval/shortcut-check.mjs   # keyboard shortcut, including when another extension owns it
 npm run eval                   # full 114-field eval against your local Ollama
 node eval/learn-demo.mjs       # the "remember what I typed" loop, end to end
 node eval/inspect-fields.mjs   # print what Ditto sees on each demo form
@@ -116,7 +119,7 @@ npm run serve                  # demo site on http://127.0.0.1:8787
 npm run pack                   # dist/ditto-extension.zip
 ```
 
-GitHub Actions run the unit tests and the extraction check on every push, deploy the site, attach the zip to tagged releases, and a manual **Model eval** workflow installs Ollama in the runner, pulls Gemma and runs the full 114-field eval in the cloud.
+GitHub Actions run the unit tests, the extraction check and the shortcut check on every push, deploy the site, attach the zip to tagged releases, and a manual **Model eval** workflow installs Ollama in the runner, pulls Gemma and runs the full 114-field eval in the cloud.
 
 ## Limitations
 

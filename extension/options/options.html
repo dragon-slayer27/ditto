@@ -16,6 +16,18 @@
     </header>
 
     <main>
+      <section class="card notice" id="key-banner" hidden>
+        <h2>One more step: pick a keyboard shortcut</h2>
+        <p>
+          Ditto has no keyboard shortcut yet. That usually means another extension already uses <span class="kbd" id="key-suggested">Alt+Shift+.</span>, so Chrome quietly left Ditto without one.
+          Choose any combination you like, or skip this: the Ditto toolbar button and right-click &rarr; <i>Fill this form with Ditto</i> always work.
+        </p>
+        <div class="row">
+          <button class="btn primary" data-open-shortcuts>Choose a shortcut</button>
+          <button class="btn" id="key-dismiss">I'll use the toolbar button</button>
+        </div>
+      </section>
+
       <section class="card" id="teach">
         <h2>Teach Ditto in one go</h2>
         <p class="muted">Paste a resume, an old form you filled, or just write a few lines about yourself. Gemma pulls out the facts, and you choose what to keep.</p>
@@ -48,11 +60,17 @@
 
       <section class="card">
         <h2>Try it with a demo person</h2>
-        <p class="muted">Load <b>Meera Iyer</b>, a fictional person with about 50 facts, then open the demo forms (a job application, a bank KYC form, a clinic intake, a rental application and a hackathon sign-up) and press <span class="kbd">Alt+Shift+D</span>.</p>
+        <p class="muted">Load <b>Meera Iyer</b>, a fictional person with about 50 facts, then open the demo forms (a job application, a bank KYC form, a clinic intake, a rental application and a hackathon sign-up) and <span class="how-to-fill">click the Ditto toolbar button</span>.</p>
         <div class="row">
           <button id="load-demo" class="btn">Load Meera (replaces your facts)</button>
           <a class="btn link" href="https://dragon-slayer27.github.io/ditto/forms/" target="_blank" rel="noopener">Open the demo forms</a>
         </div>
+      </section>
+
+      <section class="card">
+        <h2>Keyboard shortcut</h2>
+        <p class="muted" id="key-status">Checking...</p>
+        <div class="row"><button class="btn" data-open-shortcuts id="key-change">Change shortcut</button></div>
       </section>
 
       <section class="card">

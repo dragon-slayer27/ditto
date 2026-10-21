@@ -17,6 +17,7 @@
     <section id="state" class="state">
       <div class="row"><span class="dot" id="ollama-dot"></span><span id="ollama-text">Checking Ollama...</span></div>
       <div class="row"><span class="dot" id="profile-dot"></span><span id="profile-text">Loading profile...</span></div>
+      <div class="row"><span class="dot" id="key-dot"></span><span id="key-text">Checking the keyboard shortcut...</span></div>
     </section>
 
     <div id="error" class="error" hidden></div>
@@ -26,8 +27,9 @@
 
     <footer>
       <a href="#" id="open-options">Edit my profile</a>
-      <span class="kbd" title="Keyboard shortcut">Alt+Shift+D</span>
+      <span class="kbd" id="key-kbd" title="Keyboard shortcut" hidden></span>
     </footer>
+    <script src="../lib/text.js"></script>
     <script src="popup.js"></script>
   </body>
 </html>
