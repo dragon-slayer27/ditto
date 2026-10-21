@@ -71,6 +71,15 @@ Five realistic demo forms with traps (nominee sections, BLOCK LETTERS, "last 4 d
 
 Gemma 4 E4B (QAT, Q4) on an Intel Core Ultra 5 125H laptop with 16 GB RAM, CPU only. Loading the model after a reboot takes another 40 to 70 seconds. Every non-right field is listed in [`eval/results/gemma4-e4b.md`](eval/results/gemma4-e4b.md).
 
+### How small can the sloth be?
+
+| Model | Download | Right | Wrong and shown green | Output speed (my CPU) |
+|---|---|---|---|---|
+| **Gemma 4 E4B** (default) | 6.1 GB | **112 / 114 (98.2%)** | **0** | 9.7 tokens/s |
+| Gemma 4 E2B | 4.6 GB | 104 / 114 (91.2%) | 8 | 11.9 tokens/s |
+
+E2B's mistakes are the instructive kind: it put the *current* Bengaluru address into the bank form's *Permanent address* section (six fields) and copied the annual salary into "monthly take-home income". Those are real facts in the wrong place, so the tripwire, which catches facts that aren't in your profile, can't see them. That's why Ditto picks E4B when it's installed. Details: [`eval/results/gemma4-e2b.md`](eval/results/gemma4-e2b.md).
+
 ## Install
 
 1. Install [Ollama](https://ollama.com/download) and pull a Gemma model:
