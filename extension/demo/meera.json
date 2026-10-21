@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "rev": 1,
+  "persona": "Meera Krishnan Iyer (fictional demo person; every number here is made up)",
+  "facts": [
+    { "group": "Identity", "key": "Full name", "value": "Meera Krishnan Iyer" },
+    { "group": "Identity", "key": "Date of birth", "value": "2001-08-14" },
+    { "group": "Identity", "key": "Gender", "value": "Female" },
+    { "group": "Identity", "key": "Marital status", "value": "Single" },
+    { "group": "Identity", "key": "Nationality", "value": "Indian" },
+    { "group": "Identity", "key": "Place of birth", "value": "Chennai, Tamil Nadu" },
+
+    { "group": "Family", "key": "Father's name", "value": "Krishnan Ramaswamy Iyer" },
+    { "group": "Family", "key": "Mother's name", "value": "Lakshmi Iyer" },
+    { "group": "Family", "key": "Mother's maiden name", "value": "Lakshmi Subramanian" },
+    { "group": "Family", "key": "Nominee name", "value": "Lakshmi Iyer" },
+    { "group": "Family", "key": "Nominee relationship", "value": "Mother" },
+    { "group": "Family", "key": "Nominee date of birth", "value": "1968-03-02" },
+
+    { "group": "Contact", "key": "Email", "value": "meera.iyer@example.com" },
+    { "group": "Contact", "key": "Mobile number", "value": "+91 98450 12345" },
+    { "group": "Contact", "key": "LinkedIn", "value": "https://www.linkedin.com/in/meera-iyer-dev" },
+    { "group": "Contact", "key": "GitHub", "value": "https://github.com/meera-builds" },
+
+    { "group": "Address", "key": "Current address", "value": "Flat 302, Lakeview Residency, 14th Cross, HSR Layout Sector 2, Bengaluru, Karnataka 560102, India" },
+    { "group": "Address", "key": "Permanent address", "value": "12, Ganapathy Street, Mylapore, Chennai, Tamil Nadu 600004, India" },
+    { "group": "Address", "key": "Living at current address since", "value": "2024-06" },
+
+    { "group": "Work", "key": "Employer", "value": "Finlytics Technologies Pvt Ltd" },
+    { "group": "Work", "key": "Job title", "value": "Software Engineer II" },
+    { "group": "Work", "key": "Occupation type", "value": "Salaried, private sector" },
+    { "group": "Work", "key": "Total work experience", "value": "3 years (since July 2023)" },
+    { "group": "Work", "key": "Current annual CTC", "value": "INR 18,00,000" },
+    { "group": "Work", "key": "Expected annual CTC", "value": "INR 24,00,000" },
+    { "group": "Work", "key": "Notice period", "value": "60 days" },
+    { "group": "Work", "key": "Work authorization", "value": "Indian citizen, authorized to work in India without sponsorship. Needs visa sponsorship for the US or UK." },
+    { "group": "Work", "key": "Skills", "value": "TypeScript, React, Node.js, Python, PostgreSQL, AWS" },
+
+    { "group": "Education", "key": "Highest qualification", "value": "B.Tech in Computer Science and Engineering" },
+    { "group": "Education", "key": "College", "value": "National Institute of Technology, Tiruchirappalli (NIT Trichy)" },
+    { "group": "Education", "key": "Graduation year", "value": "2023" },
+    { "group": "Education", "key": "CGPA", "value": "8.62 / 10" },
+    { "group": "Education", "key": "Class 12", "value": "CBSE, 2019, 94.2%" },
+    { "group": "Education", "key": "Class 10", "value": "CBSE, 2017, 96.4%" },
+
+    { "group": "Documents", "key": "PAN", "value": "BXRPI4821K" },
+    { "group": "Documents", "key": "Aadhaar number", "value": "4821 7735 9012" },
+    { "group": "Documents", "key": "Passport number", "value": "Z4829173" },
+    { "group": "Documents", "key": "Passport expiry date", "value": "2032-05-18" },
+    { "group": "Documents", "key": "Vehicle", "value": "Two-wheeler (scooter), registration KA-01-HX-4821" },
+
+    { "group": "Health", "key": "Blood group", "value": "B+" },
+    { "group": "Health", "key": "Height", "value": "162 cm" },
+    { "group": "Health", "key": "Weight", "value": "56 kg" },
+    { "group": "Health", "key": "Allergies", "value": "Penicillin" },
+    { "group": "Health", "key": "Current medications", "value": "None" },
+    { "group": "Health", "key": "Medical conditions", "value": "Mild asthma" },
+    { "group": "Health", "key": "Smoking", "value": "Non-smoker" },
+    { "group": "Health", "key": "Alcohol", "value": "Occasionally" },
+    { "group": "Health", "key": "Health insurance provider", "value": "Star Health Insurance" },
+    { "group": "Health", "key": "Health insurance policy number", "value": "SHI/2025/0048213" },
+
+    { "group": "Emergency contact", "key": "Emergency contact name", "value": "Arjun Iyer" },
+    { "group": "Emergency contact", "key": "Emergency contact relationship", "value": "Brother" },
+    { "group": "Emergency contact", "key": "Emergency contact phone", "value": "+91 98400 67890" },
+
+    { "group": "Preferences", "key": "T-shirt size", "value": "M" },
+    { "group": "Preferences", "key": "Dietary preference", "value": "Vegetarian" },
+    { "group": "Preferences", "key": "Languages spoken", "value": "English, Tamil, Hindi, Kannada" },
+    { "group": "Preferences", "key": "Pets", "value": "None" }
+  ]
+}

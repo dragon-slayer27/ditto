@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ditto: your profile</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="sloth" aria-hidden="true">&#129445;</div>
+      <div>
+        <h1>Your Ditto profile</h1>
+        <p class="lead">Everything Ditto knows about you lives in this browser on this computer. Gemma reads it locally through Ollama when you ask Ditto to fill a form. Nothing is uploaded, ever.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="card" id="teach">
+        <h2>Teach Ditto in one go</h2>
+        <p class="muted">Paste a resume, an old form you filled, or just write a few lines about yourself. Gemma pulls out the facts, and you choose what to keep.</p>
+        <textarea id="import-text" rows="6" placeholder="e.g. My name is ... I was born on ... I live at ... My PAN is ..."></textarea>
+        <div class="row">
+          <button id="import-btn" class="btn primary">Extract facts with Gemma</button>
+          <span id="import-status" class="muted"></span>
+        </div>
+        <div id="import-results" hidden>
+          <ul id="import-list" class="changes"></ul>
+          <div class="row">
+            <button id="import-apply" class="btn primary">Add selected facts</button>
+            <button id="import-cancel" class="btn">Discard</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="row spread">
+          <h2>Facts <span id="fact-count" class="count"></span></h2>
+          <input id="search" type="search" placeholder="Search facts" />
+        </div>
+        <p class="muted">Short, plain labels work best ("Father's name", "Emergency contact phone"). Changes save automatically.</p>
+        <div id="facts"></div>
+        <div class="row">
+          <button id="add-fact" class="btn">+ Add a fact</button>
+          <span id="save-status" class="muted"></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Try it with a demo person</h2>
+        <p class="muted">Load <b>Meera Iyer</b>, a fictional person with about 50 facts, then open the demo forms (a job application, a bank KYC form, a clinic intake, a rental application and a hackathon sign-up) and press <span class="kbd">Alt+Shift+D</span>.</p>
+        <div class="row">
+          <button id="load-demo" class="btn">Load Meera (replaces your facts)</button>
+          <a class="btn link" href="https://dragon-slayer27.github.io/ditto/forms/" target="_blank" rel="noopener">Open the demo forms</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Model and connection</h2>
+        <div class="grid2">
+          <label>Ollama address<input id="ollama-url" type="url" /></label>
+          <label>Model<select id="model"><option value="">Pick automatically (prefers Gemma 4 E4B)</option></select></label>
+        </div>
+        <div class="row">
+          <button id="test" class="btn">Check connection</button>
+          <span id="conn-status" class="muted"></span>
+        </div>
+        <p class="muted small">Don't have it yet? Install <a href="https://ollama.com/download" target="_blank" rel="noopener">Ollama</a>, then run <code>ollama pull gemma4:e4b</code> (or <code>gemma4:e2b</code> on machines with 8 GB of RAM).</p>
+      </section>
+
+      <section class="card">
+        <h2>Page memory</h2>
+        <p class="muted">After a page is filled once, Ditto remembers which answer goes where, so the same form fills instantly next time. <span id="memory-count"></span></p>
+        <button id="forget" class="btn">Forget all pages</button>
+      </section>
+
+      <section class="card">
+        <h2>Your data</h2>
+        <div class="row">
+          <button id="export" class="btn">Export profile (JSON)</button>
+          <label class="btn file">Import profile (JSON)<input id="import-file" type="file" accept="application/json" hidden /></label>
+          <button id="wipe" class="btn danger">Delete everything</button>
+        </div>
+      </section>
+    </main>
+    <script src="../lib/text.js"></script>
+    <script src="../lib/llm.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

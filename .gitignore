@@ -1,0 +1,8 @@
+node_modules/
+.cache/
+dist/
+eval/results/runs/
+eval/results/video/
+*.log
+.DS_Store
+Thumbs.db

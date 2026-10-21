@@ -1,0 +1,21 @@
+{
+  "name": "ditto-form-filler",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Ditto: type it once. A Chrome extension that fills any web form from a private profile, using Gemma running locally through Ollama.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test",
+    "setup:browsers": "node scripts/install-browsers.mjs",
+    "eval": "node eval/run-eval.mjs",
+    "serve": "node scripts/serve.mjs",
+    "pack": "node scripts/pack-extension.mjs",
+    "icons": "python scripts/make-icons.py"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

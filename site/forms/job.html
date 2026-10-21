@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Apply: Software Engineer II, Payments | Northwind Careers</title>
+    <link rel="icon" href="../assets/favicon.png" />
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; font: 14px/1.5 "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #1d2433; background: #f3f5f8; }
+      .topbar { background: #0b2a4a; color: #fff; padding: 12px 24px; display: flex; align-items: center; gap: 10px; font-weight: 600; }
+      .topbar .logo { width: 26px; height: 26px; border-radius: 6px; background: #3b82f6; display: grid; place-items: center; font-weight: 800; }
+      .layout { display: grid; grid-template-columns: 240px 1fr; gap: 24px; max-width: 1060px; margin: 24px auto 80px; padding: 0 20px; }
+      .steps { background: #fff; border: 1px solid #dfe3ea; border-radius: 10px; padding: 16px; align-self: start; position: sticky; top: 16px; }
+      .steps h3 { margin: 0 0 10px; font-size: 13px; color: #5b6475; text-transform: uppercase; letter-spacing: .06em; }
+      .steps ol { margin: 0; padding-left: 18px; color: #5b6475; }
+      .steps li.on { color: #0b5cab; font-weight: 700; }
+      .job { margin: 0 0 4px; font-size: 22px; }
+      .meta { color: #5b6475; margin-bottom: 16px; }
+      section { background: #fff; border: 1px solid #dfe3ea; border-radius: 10px; padding: 18px 20px; margin-bottom: 16px; }
+      section h2 { margin: 0 0 12px; font-size: 16px; color: #0b2a4a; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+      .field { display: grid; gap: 5px; }
+      .field.wide { grid-column: 1 / -1; }
+      label { font-weight: 600; font-size: 13px; }
+      input[type=text], input[type=email], input[type=tel], input[type=url], input[type=number], select, textarea {
+        font: inherit; padding: 8px 10px; border: 1px solid #b8c0cc; border-radius: 6px; background: #fff; width: 100%; }
+      textarea { min-height: 90px; }
+      fieldset { border: 0; padding: 0; margin: 0 0 14px; }
+      legend { font-weight: 600; font-size: 13px; margin-bottom: 6px; padding: 0; }
+      fieldset label { font-weight: 400; margin-right: 18px; }
+      .check label { font-weight: 400; }
+      .actions { display: flex; justify-content: flex-end; gap: 10px; }
+      button { font: 600 14px inherit; padding: 9px 18px; border-radius: 6px; border: 1px solid #0b5cab; background: #0b5cab; color: #fff; cursor: pointer; }
+      pre { background: #0b2a4a; color: #d1e3ff; padding: 14px; border-radius: 8px; overflow: auto; font-size: 12px; }
+      .demo-note { position: fixed; left: 16px; bottom: 16px; background: #fff7d6; border: 1px solid #f0d77a; color: #6b5300; padding: 6px 10px; border-radius: 8px; font-size: 12px; }
+      @media (max-width: 800px) { .layout { grid-template-columns: 1fr; } .steps { display: none; } .grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="topbar"><span class="logo">N</span> Northwind Careers</div>
+    <div class="layout">
+      <aside class="steps">
+        <h3>Application</h3>
+        <ol>
+          <li class="on">My information</li>
+          <li>Experience</li>
+          <li>Application questions</li>
+          <li>Voluntary disclosures</li>
+          <li>Review</li>
+        </ol>
+      </aside>
+      <main>
+        <h1 class="job">Software Engineer II, Payments</h1>
+        <div class="meta">Bengaluru, India &middot; Full time &middot; Req. 48213</div>
+        <div id="root"></div>
+      </main>
+    </div>
+    <div class="demo-note">Demo form for Ditto. Nothing typed here is sent anywhere.</div>
+    <script src="vendor/react.production.min.js"></script>
+    <script src="vendor/react-dom.production.min.js"></script>
+    <script src="job.js"></script>
+  </body>
+</html>

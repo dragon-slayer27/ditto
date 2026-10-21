@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Savings Account Opening Form - Bharat Sahakari Bank</title>
+    <link rel="icon" href="../assets/favicon.png" />
+    <style>
+      body { margin: 0; background: #e9edf2; font: 13px Arial, Helvetica, sans-serif; color: #111; }
+      .bank { background: linear-gradient(#123c7a, #0c2c5c); color: #fff; padding: 10px 20px; display: flex; align-items: center; gap: 12px; }
+      .bank b { font-size: 18px; letter-spacing: .5px; }
+      .bank small { opacity: .8; }
+      .wrap { max-width: 920px; margin: 18px auto 80px; background: #fff; border: 1px solid #9aa7b8; padding: 14px 18px; }
+      h1 { font-size: 17px; text-align: center; margin: 4px 0 2px; text-transform: uppercase; }
+      .sub { text-align: center; color: #333; margin-bottom: 10px; }
+      .note { background: #fffbe6; border: 1px dashed #c9a400; padding: 6px 10px; margin-bottom: 12px; }
+      table { width: 100%; border-collapse: collapse; }
+      th[colspan] { background: #d7e3f4; color: #0c2c5c; text-align: left; padding: 6px 8px; border: 1px solid #9aa7b8; font-size: 13px; }
+      td { border: 1px solid #c5cdd8; padding: 5px 8px; vertical-align: middle; }
+      td.l { width: 26%; background: #f6f8fb; font-weight: bold; }
+      input[type=text], select, textarea { font: 13px Arial, sans-serif; border: 1px solid #7d8a9c; padding: 3px 5px; width: 96%; text-transform: none; }
+      textarea { height: 48px; }
+      .btns { text-align: center; margin-top: 14px; }
+      button { font: bold 13px Arial; padding: 6px 22px; background: #123c7a; color: #fff; border: 1px solid #0c2c5c; cursor: pointer; }
+      .demo-note { position: fixed; left: 16px; bottom: 16px; background: #fff7d6; border: 1px solid #f0d77a; color: #6b5300; padding: 6px 10px; border-radius: 8px; font: 12px system-ui, sans-serif; }
+    </style>
+  </head>
+  <body>
+    <div class="bank"><b>BHARAT SAHAKARI BANK LTD.</b><small>(A Scheduled Co-operative Bank) &middot; Since 1952</small></div>
+    <div class="wrap">
+      <h1>Account Opening Form: Savings Account (Individual)</h1>
+      <div class="sub">Form SB-1 &middot; Branch: HSR Layout, Bengaluru</div>
+      <div class="note">Instructions: Please fill all details in BLOCK LETTERS. Fields marked * are mandatory. Dates must be written as DD/MM/YYYY.</div>
+      <form id="sbform" onsubmit="event.preventDefault(); alert('Demo only: nothing was sent.');">
+        <table>
+          <tr><th colspan="4">1. PERSONAL DETAILS</th></tr>
+          <tr><td class="l">Applicant's Full Name *</td><td colspan="3"><input type="text" name="txtApplicantName" /></td></tr>
+          <tr><td class="l">Father's / Spouse's Name *</td><td colspan="3"><input type="text" name="txtFatherName" /></td></tr>
+          <tr><td class="l">Mother's Maiden Name</td><td colspan="3"><input type="text" name="txtMotherMaiden" /></td></tr>
+          <tr>
+            <td class="l">Date of Birth *</td><td><input type="text" name="txtDOB" maxlength="10" /> (DD/MM/YYYY)</td>
+            <td class="l">Gender *</td>
+            <td>
+              <label><input type="radio" name="rdoGender" value="M" /> M</label>&nbsp;
+              <label><input type="radio" name="rdoGender" value="F" /> F</label>&nbsp;
+              <label><input type="radio" name="rdoGender" value="T" /> T</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="l">Marital Status</td>
+            <td><select name="ddlMarital"><option value="">-- Select --</option><option>Single</option><option>Married</option><option>Widowed</option><option>Divorced</option></select></td>
+            <td class="l">Nationality</td><td><input type="text" name="txtNationality" /></td>
+          </tr>
+          <tr>
+            <td class="l">PAN *</td><td><input type="text" name="txtPAN" maxlength="10" /></td>
+            <td class="l">Aadhaar No. (last 4 digits only)</td><td><input type="text" name="txtAadhaar" maxlength="4" /></td>
+          </tr>
+          <tr>
+            <td class="l">Occupation</td>
+            <td>
+              <select name="ddlOccupation">
+                <option value="">-- Select --</option><option>Salaried - Government</option><option>Salaried - Private</option><option>Business</option>
+                <option>Self Employed Professional</option><option>Student</option><option>Retired</option><option>Homemaker</option>
+              </select>
+            </td>
+            <td class="l">Gross Annual Income</td>
+            <td>
+              <select name="ddlIncome">
+                <option value="">-- Select --</option><option>Up to 2.5 Lakh</option><option>2.5 - 5 Lakh</option><option>5 - 10 Lakh</option>
+                <option>10 - 25 Lakh</option><option>Above 25 Lakh</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr><th colspan="4">2. PERMANENT ADDRESS</th></tr>
+          <tr>
+            <td class="l">House / Flat No.</td><td><input type="text" name="txtPermHouse" /></td>
+            <td class="l">Street / Road</td><td><input type="text" name="txtPermStreet" /></td>
+          </tr>
+          <tr>
+            <td class="l">Area / Locality</td><td><input type="text" name="txtPermArea" /></td>
+            <td class="l">City / Town</td><td><input type="text" name="txtPermCity" /></td>
+          </tr>
+          <tr>
+            <td class="l">State</td>
+            <td>
+              <select name="ddlPermState">
+                <option value="">-- Select --</option><option>Andhra Pradesh</option><option>Delhi</option><option>Gujarat</option><option>Karnataka</option><option>Kerala</option>
+                <option>Maharashtra</option><option>Tamil Nadu</option><option>Telangana</option><option>Uttar Pradesh</option><option>West Bengal</option>
+              </select>
+            </td>
+            <td class="l">PIN Code</td><td><input type="text" name="txtPermPin" maxlength="6" /></td>
+          </tr>
+          <tr>
+            <td class="l">Is your correspondence address the same as your permanent address?</td>
+            <td colspan="3"><label><input type="radio" name="rdoSameAddr" value="Y" /> Yes</label>&nbsp; <label><input type="radio" name="rdoSameAddr" value="N" /> No</label></td>
+          </tr>
+
+          <tr><th colspan="4">3. CORRESPONDENCE ADDRESS AND CONTACT</th></tr>
+          <tr><td class="l">Correspondence Address (if different)</td><td colspan="3"><textarea name="txtCorrAddr"></textarea></td></tr>
+          <tr>
+            <td class="l">Mobile No. (+91)</td><td><input type="text" name="txtMobile" maxlength="10" /></td>
+            <td class="l">E-mail ID</td><td><input type="text" name="txtEmail" /></td>
+          </tr>
+
+          <tr><th colspan="4">4. NOMINATION (Nominee details)</th></tr>
+          <tr>
+            <td class="l">Name</td><td><input type="text" name="txtNomineeName" /></td>
+            <td class="l">Relationship with Applicant</td><td><input type="text" name="txtNomineeRel" /></td>
+          </tr>
+          <tr><td class="l">Date of Birth</td><td colspan="3"><input type="text" name="txtNomineeDOB" maxlength="10" /> (DD/MM/YYYY)</td></tr>
+
+          <tr><th colspan="4">5. DECLARATION</th></tr>
+          <tr>
+            <td colspan="4">
+              <label><input type="checkbox" name="chkDeclare" /> I hereby declare that the details furnished above are true and correct to the best of my knowledge and I undertake to inform the bank of any changes therein.</label>
+            </td>
+          </tr>
+          <tr><td class="l">Place</td><td colspan="3"><input type="text" name="txtPlace" /></td></tr>
+        </table>
+        <div class="btns"><button type="submit">Submit Application</button></div>
+      </form>
+    </div>
+    <div class="demo-note">Demo form for Ditto. Nothing typed here is sent anywhere.</div>
+  </body>
+</html>

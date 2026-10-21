@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ditto: type it once. A local AI fills every form after that.</title>
+    <meta name="description" content="Ditto is a Chrome extension that fills any web form from your private profile, using Gemma running on your own computer through Ollama. Nothing leaves your machine." />
+    <meta property="og:title" content="Ditto: type it once" />
+    <meta property="og:description" content="A local, open-model form filler. Your passport number never leaves your laptop." />
+    <meta property="og:image" content="assets/screens/bank-done.png" />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="./"><img src="assets/icon.png" alt="" width="28" height="28" /> Ditto</a>
+      <nav>
+        <a href="#how">How it works</a>
+        <a href="#results">Results</a>
+        <a href="#install">Install</a>
+        <a href="forms/">Demo forms</a>
+        <a class="gh" href="https://github.com/dragon-slayer27/ditto">GitHub</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="copy">
+        <p class="eyebrow">&#129445; Slow and steady form filling</p>
+        <h1>Type it once.<br />Ditto fills every form after that.</h1>
+        <p class="lead">
+          A Chrome extension that fills <b>any</b> web form from your private profile, using <b>Gemma 4</b> running on your own computer through
+          <b>Ollama</b>. Job portals, bank KYC, clinic intake, rental applications, college forms. Your passport number never leaves your laptop.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#install">Install Ditto (free)</a>
+          <a class="btn" href="forms/">Try the demo forms</a>
+        </div>
+        <p class="small">Open source (MIT) &middot; open-weight model (Apache 2.0) &middot; no account, no cloud, no subscription</p>
+      </div>
+      <figure class="shot">
+        <img src="assets/demo.gif" alt="Ditto filling a bank account opening form field by field" onerror="this.src='assets/screens/bank-done.png'" />
+        <figcaption>A real 26-field bank form, filled by Gemma 4 E4B on a laptop CPU (sped up).</figcaption>
+      </figure>
+    </section>
+
+    <section class="band">
+      <div class="wrap three">
+        <div>
+          <h3>Browser autofill gives up</h3>
+          <p>It knows your name and email. It has no idea what "Father's / Spouse's Name", "Aadhaar No. (last 4 digits only)" or "Name as per PAN, in BLOCK LETTERS" means.</p>
+        </div>
+        <div>
+          <h3>Cloud AI fillers want your ID</h3>
+          <p>To fill a KYC form with ChatGPT you'd paste your PAN, passport and address into someone else's server. Every time.</p>
+        </div>
+        <div>
+          <h3>Ditto reads the form like you do</h3>
+          <p>A small open model reads every label in context, so a "Name" under <i>Nominee details</i> gets your mother's name, not yours.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="wrap">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li>
+          <b>Teach it once, lazily.</b> Paste your resume or an old form into Ditto's profile page and Gemma pulls out the facts. Or just fill one form by hand and click <i>Remember what I typed</i>.
+        </li>
+        <li><b>Press <span class="kbd">Alt+Shift+D</span> on any form.</b> Gemma reads the labels and sections, and fields fill one by one, at sloth speed, while you sip your chai.</li>
+        <li><b>Glance at the colours, then submit it yourself.</b> <span class="g">Green</span> = from your profile. <span class="a">Amber</span> = please check. <span class="s">Grey</span> = needs you.</li>
+        <li><b>It gets lazier over time.</b> Every answer you type teaches it, and a form it has seen before fills in under a second.</li>
+      </ol>
+      <div class="pair">
+        <figure><img src="assets/screens/job-done.png" alt="Ditto on a React job application" /><figcaption>Works with React apps (job portals); React's own state gets every value.</figcaption></figure>
+        <figure><img src="assets/screens/options.png" alt="Ditto profile page" /><figcaption>Your profile is a plain list of facts stored only in this browser.</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="results" class="band">
+      <div class="wrap">
+        <h2>Honest numbers</h2>
+        <p>
+          I built five realistic forms (a React job application, an old table-layout bank KYC form, a clinic intake, a placeholder-only rental form and a dark-mode hackathon sign-up) with traps:
+          nominee sections, BLOCK LETTERS, "last 4 digits only", consent boxes, essay questions and fields the profile simply can't answer. Then an automated test drove the real extension through all of them.
+        </p>
+        <div id="results-table" class="table">
+          <!-- RESULTS:START -->
+          <table>
+            <thead><tr><th>Form</th><th>Fields</th><th>Right</th><th>Wrong (shown green)</th><th>First fill</th><th>Same form again</th></tr></thead>
+            <tbody>
+              <tr><td>Job application (React)</td><td>28</td><td>28</td><td>0</td><td>50 s</td><td>0.1 s</td></tr>
+              <tr><td>Bank KYC (table layout)</td><td>26</td><td>26</td><td>0</td><td>54 s</td><td>0.1 s</td></tr>
+              <tr><td>Clinic intake</td><td>23</td><td>23</td><td>0</td><td>45 s</td><td>0.1 s</td></tr>
+              <tr><td>Rental application</td><td>18</td><td>16</td><td>0</td><td>27 s</td><td>0.1 s</td></tr>
+              <tr><td>Hackathon sign-up</td><td>19</td><td>19</td><td>0</td><td>26 s</td><td>0.1 s</td></tr>
+              <tr class="total"><td>Total</td><td>114</td><td>112 (98.2%)</td><td>0</td><td>202 s</td><td>0.4 s</td></tr>
+            </tbody>
+          </table>
+          
+<!-- RESULTS:END -->
+        </div>
+        <p class="small">"Right" counts fields filled correctly <i>and</i> fields correctly left empty. Gemma 4 E4B (Q4) on an Intel Core Ultra 5 laptop, CPU only. Full per-field report in the repo.</p>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <h2>What Ditto will never do</h2>
+      <ul class="nevers">
+        <li><b>Submit a form.</b> You always press the button.</li>
+        <li><b>Tick "I agree" or "I declare".</b> Consent is yours to give.</li>
+        <li><b>Touch passwords, card numbers, OTPs or captchas.</b></li>
+        <li><b>Invent things.</b> A tripwire checks every value against your profile; anything it can't trace back turns amber.</li>
+        <li><b>Send your data anywhere.</b> It only talks to Ollama on <code>127.0.0.1</code>, and can't even read a page until you press the button.</li>
+      </ul>
+    </section>
+
+    <section id="install" class="band">
+      <div class="wrap">
+        <h2>Install (5 minutes)</h2>
+        <ol class="install">
+          <li>Install <a href="https://ollama.com/download">Ollama</a>, then run <code>ollama pull gemma4:e4b</code> (about 6 GB; use <code>gemma4:e2b</code> on 8 GB machines).</li>
+          <li>Download <a href="https://github.com/dragon-slayer27/ditto/releases/latest">ditto-extension.zip</a> and unzip it (or clone the repo).</li>
+          <li>Open <code>chrome://extensions</code>, switch on <b>Developer mode</b>, click <b>Load unpacked</b> and pick the unzipped folder.</li>
+          <li>On the profile page that opens, paste your resume or load the demo person, Meera.</li>
+          <li>Open any form (or the <a href="forms/">demo forms</a>) and press <span class="kbd">Alt+Shift+D</span>.</li>
+        </ol>
+        <p class="small">Works in Chrome, Edge, Brave and other Chromium browsers. No Ollama settings to change: Ditto handles the connection itself.</p>
+      </div>
+    </section>
+
+    <section class="wrap why">
+      <h2>Why an open model?</h2>
+      <p>
+        Forms are where we hand over the most sensitive facts we have: ID numbers, addresses, health conditions, family members. An open-weight model running locally is the only way I'd trust a robot with them.
+        It works offline, costs nothing per form, can't be switched off or repriced, and anyone can read every line of the code that touches their data.
+      </p>
+    </section>
+
+    <footer>
+      <p>Built for the DEV Hacktoberfest Open-Source AI Challenge, Week 3: <i>Slow and Steady</i>. MIT licensed. Gemma is provided under the Apache 2.0 licence.</p>
+      <p><a href="https://github.com/dragon-slayer27/ditto">Source on GitHub</a> &middot; <a href="forms/">Demo forms</a></p>
+    </footer>
+  </body>
+</html>

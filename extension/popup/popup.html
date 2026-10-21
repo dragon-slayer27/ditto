@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ditto</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <div class="sloth" aria-hidden="true">&#129445;</div>
+      <div>
+        <div class="name">Ditto</div>
+        <div class="sub">type it once &middot; local form filler</div>
+      </div>
+    </header>
+
+    <section id="state" class="state">
+      <div class="row"><span class="dot" id="ollama-dot"></span><span id="ollama-text">Checking Ollama...</span></div>
+      <div class="row"><span class="dot" id="profile-dot"></span><span id="profile-text">Loading profile...</span></div>
+    </section>
+
+    <div id="error" class="error" hidden></div>
+
+    <button id="fill" class="btn primary" disabled>Fill this page</button>
+    <button id="learn" class="btn" disabled>Remember what I typed</button>
+
+    <footer>
+      <a href="#" id="open-options">Edit my profile</a>
+      <span class="kbd" title="Keyboard shortcut">Alt+Shift+D</span>
+    </footer>
+    <script src="popup.js"></script>
+  </body>
+</html>

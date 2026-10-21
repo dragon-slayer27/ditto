@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Tests and extension checks
+    runs-on: ubuntu-latest
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.cache/ms-playwright
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Unit tests (prompt builders, streaming parser, tripwire, scoring)
+        run: npm test
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Load the real extension and check field extraction on every demo form
+        run: node eval/extract-check.mjs
+      - name: Pack the extension
+        run: npm run pack
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ditto-extension
+          path: dist/ditto-extension.zip

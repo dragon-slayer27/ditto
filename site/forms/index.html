@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ditto demo forms</title>
+    <link rel="icon" href="../assets/favicon.png" />
+    <link rel="stylesheet" href="../assets/site.css" />
+    <style>
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+      .card { background: #fffdf7; border: 1px solid #e8e0cc; border-radius: 16px; padding: 18px 20px; text-decoration: none; color: inherit; display: block; }
+      .card:hover { border-color: #84cc16; }
+      .card h3 { margin-bottom: 4px; }
+      .card p { margin: 0; color: #4b5563; font-size: 15px; }
+      .tags { margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+      .tags span { font-size: 12px; font-weight: 700; background: #efe8d8; border-radius: 99px; padding: 2px 9px; color: #4b5563; }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="../"><img src="../assets/icon.png" alt="" width="28" height="28" /> Ditto</a>
+      <nav><a href="../">Home</a><a class="gh" href="https://github.com/dragon-slayer27/ditto">GitHub</a></nav>
+    </header>
+    <section class="wrap" style="padding-top: 20px">
+      <h1 style="font-size: 38px">Demo forms</h1>
+      <p class="lead">
+        Five fake forms that behave like real ones. With Ditto installed, open its profile page, click <b>Load Meera</b> (a fictional person), then open a form and press <span class="kbd">Alt+Shift+D</span>.
+        Nothing you type on these pages is sent anywhere.
+      </p>
+      <div class="grid">
+        <a class="card" href="job.html">
+          <h3>Northwind Careers: job application</h3>
+          <p>A React app like the big applicant-tracking portals. Name splitting, salary, notice period, sponsorship questions, an essay and a certify box.</p>
+          <div class="tags"><span>React</span><span>28 fields</span><span>radios</span></div>
+        </a>
+        <a class="card" href="bank.html">
+          <h3>Bharat Sahakari Bank: account opening</h3>
+          <p>Old-school table layout. BLOCK LETTERS, DD/MM/YYYY, "Aadhaar last 4 digits only", permanent vs correspondence address, and a nominee section.</p>
+          <div class="tags"><span>table layout</span><span>26 fields</span><span>no &lt;label&gt; tags</span></div>
+        </a>
+        <a class="card" href="clinic.html">
+          <h3>Sunrise Clinic: new patient</h3>
+          <p>Date picker, computed age, blood group, a conditions checklist, two different "Phone" fields, insurance and a consent box.</p>
+          <div class="tags"><span>date input</span><span>23 fields</span><span>checkbox group</span></div>
+        </a>
+        <a class="card" href="rental.html">
+          <h3>NestEasy: tenant application</h3>
+          <p>Placeholder-only inputs, no labels at all. Plus questions the profile can't answer, like take-home pay and previous landlord.</p>
+          <div class="tags"><span>placeholders only</span><span>18 fields</span><span>traps</span></div>
+        </a>
+        <a class="card" href="hackathon.html">
+          <h3>HackSloth 2026: registration</h3>
+          <p>Dark mode with "card" radio buttons whose inputs are hidden, T-shirt size, dietary preference, code of conduct and a newsletter opt-in.</p>
+          <div class="tags"><span>hidden radios</span><span>19 fields</span><span>dark mode</span></div>
+        </a>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register | HackSloth 2026</title>
+    <link rel="icon" href="../assets/favicon.png" />
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; background: radial-gradient(1200px 600px at 80% -10%, #3b1d6e 0%, #0b0b14 55%); color: #e7e5f4; font: 15px/1.55 "Segoe UI", system-ui, sans-serif; min-height: 100vh; }
+      .hero { max-width: 760px; margin: 0 auto; padding: 42px 20px 8px; }
+      .hero h1 { margin: 0; font-size: 34px; letter-spacing: -.5px; }
+      .hero h1 span { background: linear-gradient(90deg, #a78bfa, #34d399); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .hero p { color: #a5a3c2; margin: 6px 0 0; }
+      form { max-width: 760px; margin: 0 auto 90px; padding: 0 20px; }
+      .panel { background: rgba(255, 255, 255, .04); border: 1px solid rgba(167, 139, 250, .25); border-radius: 18px; padding: 20px 22px; margin-top: 18px; }
+      h2 { margin: 0 0 14px; font-size: 16px; color: #c4b5fd; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; }
+      .full { grid-column: 1 / -1; }
+      .f { display: grid; gap: 6px; }
+      .f > label, .q { font-size: 13px; font-weight: 600; color: #cfcbea; }
+      input[type=text], input[type=email], input[type=tel], input[type=url], input[type=number], select, textarea {
+        font: inherit; color: #f5f3ff; background: #15142a; border: 1px solid #3a3760; border-radius: 12px; padding: 10px 12px; width: 100%; }
+      textarea { min-height: 80px; }
+      .cards { display: flex; gap: 8px; flex-wrap: wrap; }
+      .cards label { position: relative; }
+      .cards input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+      .cards span { display: inline-grid; place-items: center; min-width: 52px; padding: 8px 12px; border-radius: 12px; border: 1px solid #3a3760; background: #15142a; cursor: pointer; font-weight: 700; }
+      .cards input:checked + span { background: #7c3aed; border-color: #a78bfa; }
+      .tick { display: flex; gap: 10px; align-items: center; margin-top: 10px; color: #cfcbea; }
+      button { margin-top: 20px; font: 700 16px inherit; padding: 12px 26px; border-radius: 14px; border: 0; background: linear-gradient(90deg, #7c3aed, #10b981); color: #fff; cursor: pointer; }
+      .demo-note { position: fixed; left: 16px; bottom: 16px; background: #fff7d6; border: 1px solid #f0d77a; color: #6b5300; padding: 6px 10px; border-radius: 8px; font-size: 12px; }
+      @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="hero">
+      <h1>HackSloth <span>2026</span></h1>
+      <p>36 hours &middot; Bengaluru &middot; build something that lets people do less</p>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Demo only: nothing was sent.');">
+      <div class="panel">
+        <h2>You</h2>
+        <div class="grid">
+          <div class="f"><label for="fullName">Full name</label><input type="text" id="fullName" name="fullName" /></div>
+          <div class="f"><label for="email">Email</label><input type="email" id="email" name="email" /></div>
+          <div class="f"><label for="phone">Phone (with country code)</label><input type="tel" id="phone" name="phone" /></div>
+          <div class="f"><label for="city">City you'll travel from</label><input type="text" id="city" name="city" /></div>
+          <div class="f"><label for="org">College or company</label><input type="text" id="org" name="org" /></div>
+          <div class="f">
+            <label for="role">You are a...</label>
+            <select id="role" name="role"><option value="">Pick one</option><option>Student</option><option>Working professional</option><option>Freelancer</option><option>Other</option></select>
+          </div>
+          <div class="f"><label for="github">GitHub profile</label><input type="url" id="github" name="github" /></div>
+          <div class="f"><label for="linkedin">LinkedIn</label><input type="url" id="linkedin" name="linkedin" /></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Logistics</h2>
+        <div class="grid">
+          <div class="f full">
+            <div class="q" id="tshirt-q">T-shirt size</div>
+            <div class="cards" role="radiogroup" aria-labelledby="tshirt-q">
+              <label><input type="radio" name="tshirt" value="XS" /><span>XS</span></label>
+              <label><input type="radio" name="tshirt" value="S" /><span>S</span></label>
+              <label><input type="radio" name="tshirt" value="M" /><span>M</span></label>
+              <label><input type="radio" name="tshirt" value="L" /><span>L</span></label>
+              <label><input type="radio" name="tshirt" value="XL" /><span>XL</span></label>
+              <label><input type="radio" name="tshirt" value="XXL" /><span>XXL</span></label>
+            </div>
+          </div>
+          <div class="f">
+            <label for="diet">Dietary preference</label>
+            <select id="diet" name="diet">
+              <option value="">Pick one</option><option>No preference</option><option>Vegetarian</option><option>Vegan</option><option>Jain</option><option>Halal</option><option>Gluten-free</option>
+            </select>
+          </div>
+          <div class="f"><label for="allergies">Any allergies we should know about?</label><input type="text" id="allergies" name="allergies" /></div>
+          <div class="f"><label for="ecName">Emergency contact name</label><input type="text" id="ecName" name="ecName" /></div>
+          <div class="f"><label for="ecPhone">Emergency contact phone</label><input type="tel" id="ecPhone" name="ecPhone" /></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Your hacking</h2>
+        <div class="grid">
+          <div class="f full"><label for="skills">Top skills (comma separated)</label><input type="text" id="skills" name="skills" /></div>
+          <div class="f"><label for="hackathons">How many hackathons have you attended?</label><input type="number" id="hackathons" name="hackathons" /></div>
+          <div class="f"><label for="team">Team name (if you already have one)</label><input type="text" id="team" name="team" /></div>
+          <div class="f full"><label for="idea">What do you want to build?</label><textarea id="idea" name="idea"></textarea></div>
+        </div>
+        <label class="tick"><input type="checkbox" name="coc" /> I agree to the HackSloth Code of Conduct</label>
+        <label class="tick"><input type="checkbox" name="newsletter" /> Subscribe me to the HackSloth newsletter</label>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+    <div class="demo-note">Demo form for Ditto. Nothing typed here is sent anywhere.</div>
+  </body>
+</html>

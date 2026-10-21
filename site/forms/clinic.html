@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New Patient Registration | Sunrise Multispeciality Clinic</title>
+    <link rel="icon" href="../assets/favicon.png" />
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #effaf8; color: #12332f; font: 15px/1.5 "Segoe UI", system-ui, sans-serif; }
+      header { background: #0f766e; color: #fff; padding: 18px 28px; }
+      header h1 { margin: 0; font-size: 22px; }
+      header p { margin: 2px 0 0; opacity: .85; }
+      form { max-width: 820px; margin: 24px auto 90px; padding: 0 20px; }
+      .card { background: #fff; border-radius: 14px; box-shadow: 0 1px 3px rgba(15, 118, 110, .15); padding: 18px 22px; margin-bottom: 16px; }
+      h2 { margin: 0 0 12px; font-size: 17px; color: #0f766e; }
+      .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 18px; }
+      .full { grid-column: 1 / -1; }
+      .f { display: grid; gap: 5px; }
+      .f > label { font-weight: 600; font-size: 13.5px; }
+      input[type=text], input[type=email], input[type=tel], input[type=number], input[type=date], select, textarea {
+        font: inherit; padding: 9px 11px; border: 1.5px solid #b7dcd6; border-radius: 10px; background: #fbfffe; width: 100%; }
+      textarea { min-height: 70px; }
+      fieldset { border: 0; margin: 0; padding: 0; }
+      legend { font-weight: 600; font-size: 13.5px; padding: 0; margin-bottom: 6px; }
+      .opts label { margin-right: 16px; white-space: nowrap; }
+      .consent { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; }
+      button { font: 600 15px inherit; background: #0f766e; color: #fff; border: 0; border-radius: 10px; padding: 11px 22px; cursor: pointer; }
+      .demo-note { position: fixed; left: 16px; bottom: 16px; background: #fff7d6; border: 1px solid #f0d77a; color: #6b5300; padding: 6px 10px; border-radius: 8px; font-size: 12px; }
+      @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Sunrise Multispeciality Clinic</h1>
+      <p>New patient registration &middot; please complete before your appointment</p>
+    </header>
+    <form onsubmit="event.preventDefault(); alert('Demo only: nothing was sent.');">
+      <div class="card">
+        <h2>Patient details</h2>
+        <div class="grid">
+          <div class="f full"><label for="patientName">Patient's full name</label><input type="text" id="patientName" name="patientName" /></div>
+          <div class="f"><label for="dob">Date of birth</label><input type="date" id="dob" name="dob" /></div>
+          <div class="f"><label for="age">Age (years)</label><input type="number" id="age" name="age" min="0" max="120" /></div>
+          <fieldset class="f">
+            <legend>Sex</legend>
+            <div class="opts">
+              <label><input type="radio" name="sex" value="male" /> Male</label>
+              <label><input type="radio" name="sex" value="female" /> Female</label>
+              <label><input type="radio" name="sex" value="other" /> Other</label>
+            </div>
+          </fieldset>
+          <div class="f">
+            <label for="bloodGroup">Blood group</label>
+            <select id="bloodGroup" name="bloodGroup">
+              <option value="">Choose...</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+              <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option><option>Don't know</option>
+            </select>
+          </div>
+          <div class="f"><label for="height">Height (cm)</label><input type="number" id="height" name="height" /></div>
+          <div class="f"><label for="weight">Weight (kg)</label><input type="number" id="weight" name="weight" /></div>
+          <div class="f"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" /></div>
+          <div class="f"><label for="email">Email</label><input type="email" id="email" name="email" /></div>
+          <div class="f full"><label for="address">Home address</label><textarea id="address" name="address"></textarea></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Medical history</h2>
+        <div class="grid">
+          <div class="f"><label for="allergies">Known allergies</label><input type="text" id="allergies" name="allergies" /></div>
+          <div class="f"><label for="meds">Current medications</label><input type="text" id="meds" name="meds" /></div>
+          <fieldset class="f full">
+            <legend>Do you have any of these conditions?</legend>
+            <div class="opts">
+              <label><input type="checkbox" name="conditions" value="diabetes" /> Diabetes</label>
+              <label><input type="checkbox" name="conditions" value="bp" /> High blood pressure</label>
+              <label><input type="checkbox" name="conditions" value="asthma" /> Asthma</label>
+              <label><input type="checkbox" name="conditions" value="thyroid" /> Thyroid disorder</label>
+              <label><input type="checkbox" name="conditions" value="heart" /> Heart disease</label>
+              <label><input type="checkbox" name="conditions" value="none" /> None of these</label>
+            </div>
+          </fieldset>
+          <fieldset class="f">
+            <legend>Do you smoke?</legend>
+            <div class="opts"><label><input type="radio" name="smoke" value="yes" /> Yes</label><label><input type="radio" name="smoke" value="no" /> No</label></div>
+          </fieldset>
+          <div class="f">
+            <label for="alcohol">Alcohol consumption</label>
+            <select id="alcohol" name="alcohol"><option value="">Choose...</option><option>Never</option><option>Occasionally</option><option>Regularly</option></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Emergency contact</h2>
+        <div class="grid">
+          <div class="f"><label for="ecName">Name</label><input type="text" id="ecName" name="ecName" /></div>
+          <div class="f"><label for="ecRelation">Relationship to patient</label><input type="text" id="ecRelation" name="ecRelation" /></div>
+          <div class="f"><label for="ecPhone">Phone</label><input type="tel" id="ecPhone" name="ecPhone" /></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Insurance</h2>
+        <div class="grid">
+          <div class="f"><label for="insurer">Insurance provider</label><input type="text" id="insurer" name="insurer" /></div>
+          <div class="f"><label for="policy">Policy number</label><input type="text" id="policy" name="policy" /></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Today's visit</h2>
+        <div class="grid">
+          <div class="f full"><label for="reason">Reason for today's visit</label><textarea id="reason" name="reason"></textarea></div>
+          <div class="f"><label for="referredBy">Referred by (doctor's name)</label><input type="text" id="referredBy" name="referredBy" /></div>
+        </div>
+        <p class="consent"><input type="checkbox" id="consent" name="consent" /><label for="consent">I consent to examination and treatment, and to the clinic's privacy policy.</label></p>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+    <div class="demo-note">Demo form for Ditto. Nothing typed here is sent anywhere.</div>
+  </body>
+</html>

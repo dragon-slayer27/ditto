@@ -1,0 +1,50 @@
+name: Model eval (real Gemma in CI)
+
+# Manually triggered: downloads an open Gemma model into the runner, drives the real extension
+# through all five demo forms (114 fields) and posts the scorecard to the job summary.
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: Ollama model tag to evaluate
+        required: true
+        default: gemma4:e2b
+
+permissions:
+  contents: read
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.cache/ms-playwright
+      MODEL: ${{ inputs.model }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Install Ollama
+        run: curl -fsSL https://ollama.com/install.sh | sh
+      - name: Start Ollama and pull the model
+        run: |
+          (ollama serve > ollama.log 2>&1 &)
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:11434/api/version && break; sleep 2; done
+          ollama pull "$MODEL"
+      - name: Fill 114 fields across 5 forms with the real extension
+        run: node eval/run-eval.mjs --model "$MODEL" --tag ci
+      - name: Publish the scorecard
+        if: always()
+        run: |
+          if [ -f eval/results/ci.md ]; then cat eval/results/ci.md >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-report
+          path: |
+            eval/results/ci.md
+            eval/results/ci.json

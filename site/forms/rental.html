@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Apply for 2BHK in Koramangala | NestEasy</title>
+    <link rel="icon" href="../assets/favicon.png" />
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #fafafa; color: #18181b; font: 15px/1.5 Inter, "Segoe UI", system-ui, sans-serif; }
+      nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 28px; border-bottom: 1px solid #e4e4e7; background: #fff; }
+      nav b { font-size: 18px; letter-spacing: -.3px; }
+      nav b span { color: #e11d48; }
+      main { max-width: 620px; margin: 30px auto 90px; padding: 0 20px; }
+      h1 { font-size: 26px; letter-spacing: -.5px; margin: 0 0 4px; }
+      .lede { color: #71717a; margin: 0 0 22px; }
+      h3 { margin: 26px 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: #a1a1aa; }
+      .stack { display: grid; gap: 10px; }
+      .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      input, select, textarea { font: inherit; width: 100%; padding: 12px 14px; border: 1px solid #e4e4e7; border-radius: 12px; background: #fff; }
+      input:focus, select:focus, textarea:focus { outline: 2px solid #fb7185; border-color: transparent; }
+      textarea { min-height: 80px; }
+      .seg { display: flex; gap: 8px; flex-wrap: wrap; }
+      .seg label { border: 1px solid #e4e4e7; border-radius: 999px; padding: 7px 14px; background: #fff; cursor: pointer; }
+      button { margin-top: 22px; width: 100%; font: 600 16px inherit; padding: 13px; border: 0; border-radius: 12px; background: #e11d48; color: #fff; cursor: pointer; }
+      .demo-note { position: fixed; left: 16px; bottom: 16px; background: #fff7d6; border: 1px solid #f0d77a; color: #6b5300; padding: 6px 10px; border-radius: 8px; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <nav><b>nest<span>easy</span></b><span>Need help? Chat with us</span></nav>
+    <main>
+      <h1>Apply for this home</h1>
+      <p class="lede">2BHK &middot; 5th Block, Koramangala &middot; &#8377;42,000 / month</p>
+      <form onsubmit="event.preventDefault(); alert('Demo only: nothing was sent.');">
+        <h3>About you</h3>
+        <div class="stack">
+          <input name="fullName" placeholder="Full name" />
+          <div class="two">
+            <input name="email" type="email" placeholder="Email address" />
+            <input name="mobile" type="tel" placeholder="Mobile number" />
+          </div>
+          <textarea name="currentAddress" placeholder="Current address"></textarea>
+        </div>
+
+        <h3>Work and income</h3>
+        <div class="stack">
+          <div class="two">
+            <input name="employer" placeholder="Employer / company" />
+            <input name="designation" placeholder="Designation" />
+          </div>
+          <div class="two">
+            <input name="monthlyIncome" type="number" placeholder="Monthly take-home income (&#8377;)" />
+            <input name="pan" placeholder="PAN (for the rent agreement)" />
+          </div>
+        </div>
+
+        <h3>Household</h3>
+        <div class="stack">
+          <input name="occupants" type="number" placeholder="Number of people who will live here" />
+          <div class="two">
+            <select name="pets" aria-label="Pets">
+              <option value="">Pets?</option><option>No pets</option><option>Dog</option><option>Cat</option><option>Other</option>
+            </select>
+            <select name="parking" aria-label="Vehicle parking needed">
+              <option value="">Vehicle parking needed?</option><option>None</option><option>Two-wheeler</option><option>Car</option><option>Both</option>
+            </select>
+          </div>
+          <input name="vehicleNumber" placeholder="Vehicle registration number" />
+          <div class="seg" role="radiogroup" aria-label="Food preference">
+            <label><input type="radio" name="food" value="veg" /> Vegetarian</label>
+            <label><input type="radio" name="food" value="nonveg" /> Non-vegetarian</label>
+            <label><input type="radio" name="food" value="egg" /> Eggetarian</label>
+          </div>
+          <input name="languages" placeholder="Languages you speak" />
+          <input name="moveIn" type="date" placeholder="Preferred move-in date" aria-label="Preferred move-in date" />
+          <div class="two">
+            <input name="prevLandlord" placeholder="Previous landlord's name" />
+            <input name="prevLandlordPhone" type="tel" placeholder="Previous landlord's phone" />
+          </div>
+          <textarea name="notes" placeholder="Anything else we should know?"></textarea>
+        </div>
+        <button type="submit">Send application</button>
+      </form>
+    </main>
+    <div class="demo-note">Demo form for Ditto. Nothing typed here is sent anywhere.</div>
+  </body>
+</html>
