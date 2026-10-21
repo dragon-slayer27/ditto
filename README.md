@@ -80,6 +80,8 @@ Gemma 4 E4B (QAT, Q4) on an Intel Core Ultra 5 125H laptop with 16 GB RAM, CPU o
 
 E2B's mistakes are the instructive kind: it put the *current* Bengaluru address into the bank form's *Permanent address* section (six fields) and copied the annual salary into "monthly take-home income". Those are real facts in the wrong place, so the tripwire, which catches facts that aren't in your profile, can't see them. That's why Ditto picks E4B when it's installed. Details: [`eval/results/gemma4-e2b.md`](eval/results/gemma4-e2b.md).
 
+The same eval also runs in the cloud: the [Model eval workflow](https://github.com/dragon-slayer27/ditto/actions/workflows/model-eval.yml) installs Ollama on a standard GitHub runner, pulls Gemma and fills all 114 fields with the real extension. Its [first run](https://github.com/dragon-slayer27/ditto/actions/runs/39649957127) took under five minutes and reproduced the finding: E2B scored 106/114 there, with the same permanent-address mistake.
+
 ## Install
 
 1. Install [Ollama](https://ollama.com/download) and pull a Gemma model:
