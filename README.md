@@ -71,6 +71,8 @@ Five realistic demo forms with traps (nominee sections, BLOCK LETTERS, "last 4 d
 
 Gemma 4 E4B (QAT, Q4) on an Intel Core Ultra 5 125H laptop with 16 GB RAM, CPU only. Loading the model after a reboot takes another 40 to 70 seconds. Every non-right field is listed in [`eval/results/gemma4-e4b.md`](eval/results/gemma4-e4b.md).
 
+**Time saved:** filling these five forms by hand takes an estimated 11.5 to 14.5 minutes (Keystroke-Level Model). With Ditto you spend about 1 minute pressing the shortcut and checking the colours. See [`eval/results/payoff.md`](eval/results/payoff.md) and the script that computes it, [`eval/payoff.mjs`](eval/payoff.mjs).
+
 ### How small can the sloth be?
 
 | Model | Download | Right | Wrong and shown green | Output speed (my CPU) |
