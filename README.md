@@ -13,6 +13,8 @@ Job portals, bank KYC, clinic intake, rental applications, college forms: they a
 
 **Website and demo forms:** https://dragon-slayer27.github.io/ditto/
 
+**Write-up on DEV:** [Ditto: type it once, and Gemma 4 on your laptop fills every form after that](https://dev.to/vivaan_teotia_/ditto-type-it-once-and-gemma-4-on-your-laptop-fills-every-form-after-that-331)
+
 ## Why
 
 Browser autofill knows your name and email. It has no idea what "Father's / Spouse's Name", "Aadhaar No. (last 4 digits only)" or "Name as per PAN, in BLOCK LETTERS" means, so you type it all again, on every form, forever.
